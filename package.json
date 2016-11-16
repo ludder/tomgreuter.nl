@@ -4,7 +4,11 @@
   "description": "Homepage of Tom Greuter - web developer",
   "main": "index.html",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-live-server": "0.0.30"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
