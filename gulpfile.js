@@ -1,11 +1,15 @@
 var gulp = require( 'gulp' );
 var gls = require( 'gulp-live-server' );
-var clean = require( 'gulp-clean' );
+var del = require( 'del' );
 
 var src = 'src/*';
 var dist = 'dist';
 
 gulp.task( 'default', function() {
+
+    // First clean up dist folder
+    del( [ dist ] );
+
     gulp
         .src( src )
         // .pipe(gulpCopy(outputPath, options))

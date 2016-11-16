@@ -5,8 +5,8 @@
   "main": "index.html",
   "dependencies": {},
   "devDependencies": {
+    "del": "^2.2.2",
     "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2",
     "gulp-live-server": "0.0.30"
   },
   "scripts": {
