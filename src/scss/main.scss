@@ -1,3 +1,8 @@
 body {
-    background: #926;
+    background: #fff;
+    font-family: Verdana,Geneva,sans-serif;
+    margin: 0;
 }
+
+@import 'partials/reset';
+@import 'partials/header';

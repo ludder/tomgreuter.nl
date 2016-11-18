@@ -1,0 +1,21 @@
+header {
+    background: #E2E7E8;
+    font-family: 'Trebuchet MS','Lucida Grande','Lucida Sans Unicode','Lucida Sans',Tahoma,sans-serif;
+    overflow: auto;
+
+    h1 {
+        background: #355;
+        color: #fff;
+        float: left;
+        font-size: 40px;
+        padding: 20px 50px;
+    }
+
+    h2 {
+        color: #355;
+        float: right;
+        font-size: 30px;
+        line-height: 2;
+        padding: 20px 20px 0;
+    }
+}

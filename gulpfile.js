@@ -9,16 +9,7 @@ var src = 'src/*',
 
 gulp.task( 'default', [ 'clean', 'serve', 'watch', 'templates', 'sass', ] );
 
-// gulp.task( 'default', function() {
-//     gulp
-//         .src( src )
-//         // .pipe(gulpCopy(outputPath, options))
-//         // .pipe(otherGulpFunction())
-//         .pipe( gulp.dest( dist ) );
-// } );
-
 gulp.task( 'clean', function() {
-    // First clean up dist folder
     del( [ dist ] );
 } );
 
@@ -34,6 +25,7 @@ gulp.task( 'serve', function() {
 gulp.task( 'watch', function( file ) {
     gulp.watch( 'src/scss/**/*.scss', [ 'sass' ] );
     gulp.watch( 'src/js/**/*.js', [ 'scripts' ] );
+    gulp.watch( 'src/**/*.html', [ 'templates' ] );
 } );
 
 gulp.task( 'sass', function() {
