@@ -1,8 +1,19 @@
+@import 'partials/reset';
+@import 'partials/colors';
+
 body {
     background: #fff;
     font-family: Verdana,Geneva,sans-serif;
     margin: 0;
 }
 
-@import 'partials/reset';
+a {
+    color: $text_color_main;
+
+    &:hover, &:focus {
+        text-decoration: none;
+    }
+}
+
 @import 'partials/header';
+@import 'partials/content';
