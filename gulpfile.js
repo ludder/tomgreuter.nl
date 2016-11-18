@@ -1,33 +1,52 @@
-var gulp = require( 'gulp' );
-var gls = require( 'gulp-live-server' );
-var del = require( 'del' );
+var del = require( 'del' ),
+    gulp = require( 'gulp' ),
+    gls = require( 'gulp-live-server' ),
+    sass = require( 'gulp-sass' );
 
-var src = 'src/*';
-var dist = 'dist';
+var src = 'src/*',
+    dist = 'dist',
+    server;
 
-gulp.task( 'default', function() {
+gulp.task( 'default', [ 'clean', 'serve', 'watch', 'templates', 'sass', ] );
 
+// gulp.task( 'default', function() {
+//     gulp
+//         .src( src )
+//         // .pipe(gulpCopy(outputPath, options))
+//         // .pipe(otherGulpFunction())
+//         .pipe( gulp.dest( dist ) );
+// } );
+
+gulp.task( 'clean', function() {
     // First clean up dist folder
     del( [ dist ] );
-
-    gulp
-        .src( src )
-        // .pipe(gulpCopy(outputPath, options))
-        // .pipe(otherGulpFunction())
-        .pipe( gulp.dest( dist ) );
 } );
 
 gulp.task( 'serve', function() {
-    //1. serve with default settings
-    // var server = gls.static(); //equals to gls.static('public', 3000);
-    // server.start();
-
-    //2. serve at custom port
-    var server = gls.static( dist, 8888 );
+    server = gls.static( dist, 8888 );
     server.start();
 
-    //use gulp.watch to trigger server actions(notify, start or stop)
-    gulp.watch( [ 'static/**/*.css', 'static/**/*.html' ], function( file ) {
+    gulp.watch( [ dist + '/**/*' ], function( file ) {
         server.notify.apply( server, [ file ] );
     } );
+} );
+
+gulp.task( 'watch', function( file ) {
+    gulp.watch( 'src/scss/**/*.scss', [ 'sass' ] );
+    gulp.watch( 'src/js/**/*.js', [ 'scripts' ] );
+} );
+
+gulp.task( 'sass', function() {
+    return gulp.src( './src/scss/**/*.scss' )
+        .pipe( sass.sync().on( 'error', sass.logError ) )
+        .pipe( gulp.dest( dist ) );
+} );
+
+gulp.task( 'sass:watch', function() {
+    gulp.watch( './sass/**/*.scss', [ 'sass' ] );
+} );
+
+gulp.task( 'templates', function() {
+    return gulp.src( './src/**/*.html' )
+        .pipe( gulp.dest( dist ) );
 } );
