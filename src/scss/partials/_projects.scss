@@ -33,13 +33,24 @@
             font-size: smaller;
             margin: 5px;
             padding: 3px 5px;
-            -webkit-transform: rotate(-2deg);
-            transform: rotate(-2deg);
+            -webkit-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+
+            &:nth-child(2) {
+                -webkit-transform: rotate(-2deg);
+                transform: rotate(-2deg);
+                margin-left: 3px;
+            }
+
+            &:nth-child(3) {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
 
             &:hover {
                 background-color: #F7F1D3;
-                -webkit-transform: rotate(-1deg);
-                transform: rotate(-1deg);
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
             }
 
             span {
