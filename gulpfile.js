@@ -1,9 +1,8 @@
 var del = require( 'del' ),
     gulp = require( 'gulp' ),
     gls = require( 'gulp-live-server' ),
-    sass = require( 'gulp-sass' );
-
-var src = 'src/*',
+    sass = require( 'gulp-sass' ),
+    src = 'src/*',
     dist = 'dist',
     server;
 
@@ -35,7 +34,7 @@ gulp.task( 'sass', function() {
 } );
 
 gulp.task( 'sass:watch', function() {
-    gulp.watch( './sass/**/*.scss', [ 'sass' ] );
+    gulp.watch( './scss/**/*.scss', [ 'sass' ] );
 } );
 
 gulp.task( 'templates', function() {

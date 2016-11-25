@@ -19,6 +19,7 @@
 
 .contact {
     background: $bg_main_light;
+    border: 1px solid darken($bg_main_light, 10);
     -webkit-border-radius: 20px;
     border-radius: 20px;
     display: block;
@@ -28,7 +29,7 @@
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
-    transition: all .35s ease-in-out;
+    transition: all .3s ease-out;
     font-weight: bold;
     text-decoration: none;
 
