@@ -6,7 +6,7 @@ var del = require( 'del' ),
     dist = 'dist',
     server;
 
-gulp.task( 'default', [ 'clean', 'serve', 'watch', 'templates', 'sass', ] );
+gulp.task( 'default', [ 'clean', 'serve', 'watch', 'templates', 'images', 'sass', ] );
 
 gulp.task( 'clean', function() {
     del( [ dist ] );
@@ -40,4 +40,9 @@ gulp.task( 'sass:watch', function() {
 gulp.task( 'templates', function() {
     return gulp.src( './src/**/*.html' )
         .pipe( gulp.dest( dist ) );
+} );
+
+gulp.task( 'images', function() {
+    return gulp.src( './src/images/**/*.*' )
+        .pipe( gulp.dest( dist + '/images') );
 } );

@@ -64,4 +64,32 @@
     p {
         line-height: 1.7;
     }
+
+    .logo {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 50px;
+        width: 100%;
+    }
+
+    .sanoma {
+        background-color: #4d4d4d;
+    }
+
+    .albelli img {
+        height: 100px;
+    }
+
+    .klm img {
+        height: 70px;
+    }
+
+    .breman img {
+        height: 60px;
+    }
+
+    .ing img {
+        height: 60px;
+    }
 }
