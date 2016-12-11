@@ -19,4 +19,17 @@ header {
         line-height: 2;
         padding: 20px 20px 0;
     }
+
+    a {
+        text-decoration: none;
+
+        &:hover {
+            &::before {
+                content: 'Contact me - ';
+                color: #999;
+            }
+
+            text-decoration: underline;
+        }
+    }
 }
