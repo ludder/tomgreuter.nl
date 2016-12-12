@@ -1,18 +1,20 @@
 var del = require( 'del' ),
+    pump = require( 'pump' ),
     gulp = require( 'gulp' ),
+    gutil = require( 'gulp-util' ),
+    uglify = require( 'gulp-uglify' ),
     gls = require( 'gulp-live-server' ),
     sass = require( 'gulp-sass' ),
-    gutil = require( 'gulp-util' ),
     ftp = require( 'vinyl-ftp' ),
     ftp_config = require( './ftp.config' ).config,
     src = 'src/*',
     dist = 'dist',
     server;
 
-gulp.task( 'default', [ 'clean', 'serve', 'watch', 'templates', 'images', 'sass', ] );
 
-gulp.task( 'clean', function() {
+gulp.task( 'clean', function( done ) {
     del( [ dist ] );
+    done();
 } );
 
 gulp.task( 'serve', function() {
@@ -22,13 +24,16 @@ gulp.task( 'serve', function() {
     gulp.watch( [ dist + '/**/*' ], function( file ) {
         server.notify.apply( server, [ file ] );
     } );
+    gulp.watch( 'src/scss/**/*.scss', gulp.parallel[ 'sass', 'uglify', 'templates' ] );
+    // gulp.watch( 'src/js/**/*.js', [ 'uglify' ] );
+    // gulp.watch( 'src/**/*.html', [ 'templates' ] );
 } );
 
-gulp.task( 'watch', function( file ) {
-    gulp.watch( 'src/scss/**/*.scss', [ 'sass' ] );
-    gulp.watch( 'src/js/**/*.js', [ 'scripts' ] );
-    gulp.watch( 'src/**/*.html', [ 'templates' ] );
-} );
+// gulp.task( 'watch', function( file ) {
+//     gulp.watch( 'src/scss/**/*.scss', [ 'sass' ] );
+//     gulp.watch( 'src/js/**/*.js', [ 'uglify' ] );
+//     gulp.watch( 'src/**/*.html', [ 'templates' ] );
+// } );
 
 gulp.task( 'sass', function() {
     return gulp.src( './src/scss/**/*.scss' )
@@ -36,9 +41,9 @@ gulp.task( 'sass', function() {
         .pipe( gulp.dest( dist ) );
 } );
 
-gulp.task( 'sass:watch', function() {
-    gulp.watch( './scss/**/*.scss', [ 'sass' ] );
-} );
+// gulp.task( 'sass:watch', function() {
+//     gulp.watch( './scss/**/*.scss', [ 'sass' ] );
+// } );
 
 gulp.task( 'templates', function() {
     return gulp.src( './src/**/*.html' )
@@ -50,9 +55,22 @@ gulp.task( 'images', function() {
         .pipe( gulp.dest( dist + '/images' ) );
 } );
 
-gulp.task( 'deploy', function() {
+gulp.task( 'uglify', function( cb ) {
+    pump( [
+            gulp.src( './src/js/**/*.js' ),
+            uglify(),
+            gulp.dest( dist )
+        ],
+        cb
+    );
+} );
 
-    console.info('ftp_config.host', ftp_config);
+// gulp.task( 'build', gulp.series( 'uglify', 'sass', function(done) {
+//     done();
+// }) );
+
+gulp.task( 'deploy', gulp.series( 'uglify', 'sass', function() {
+
     var conn = ftp.create( {
         host: ftp_config.host,
         user: ftp_config.user,
@@ -67,10 +85,14 @@ gulp.task( 'deploy', function() {
     // turn off buffering in gulp.src for best performance
 
     return gulp.src( globs, {
-            base: './dist',
+            base: './' + dist,
             buffer: false
         } )
         .pipe( conn.newer( '/public_html' ) ) // only upload newer files
         .pipe( conn.dest( '/public_html' ) );
 
-} );
+} ) );
+
+gulp.task( 'default', gulp.series( 'clean', 'templates', 'images', 'sass', 'uglify', 'serve', function( done ) {
+    done();
+} ) );
