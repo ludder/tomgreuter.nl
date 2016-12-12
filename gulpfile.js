@@ -2,6 +2,9 @@ var del = require( 'del' ),
     gulp = require( 'gulp' ),
     gls = require( 'gulp-live-server' ),
     sass = require( 'gulp-sass' ),
+    gutil = require( 'gulp-util' ),
+    ftp = require( 'vinyl-ftp' ),
+    ftp_config = require( './ftp.config' ).config,
     src = 'src/*',
     dist = 'dist',
     server;
@@ -44,5 +47,30 @@ gulp.task( 'templates', function() {
 
 gulp.task( 'images', function() {
     return gulp.src( './src/images/**/*.*' )
-        .pipe( gulp.dest( dist + '/images') );
+        .pipe( gulp.dest( dist + '/images' ) );
+} );
+
+gulp.task( 'deploy', function() {
+
+    console.info('ftp_config.host', ftp_config);
+    var conn = ftp.create( {
+        host: ftp_config.host,
+        user: ftp_config.user,
+        password: ftp_config.password,
+        parallel: 10,
+        log: gutil.log
+    } );
+
+    var globs = [ dist + '/**' ];
+
+    // using base = '.' will transfer everything to /public_html correctly
+    // turn off buffering in gulp.src for best performance
+
+    return gulp.src( globs, {
+            base: './dist',
+            buffer: false
+        } )
+        .pipe( conn.newer( '/public_html' ) ) // only upload newer files
+        .pipe( conn.dest( '/public_html' ) );
+
 } );
