@@ -3,12 +3,18 @@
   "version": "1.0.0",
   "description": "Homepage of Tom Greuter - web developer",
   "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ludder/tg.nl.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-live-server": "0.0.30",
-    "gulp-sass": "^2.3.2"
+    "gulp-sass": "^2.3.2",
+    "gulp-util": "^3.0.7",
+    "vinyl-ftp": "^0.5.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
