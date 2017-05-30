@@ -24,7 +24,7 @@ gulp.task( 'serve', function() {
     gulp.watch( [ dist + '/**/*' ], function( file ) {
         server.notify.apply( server, [ file ] );
     } );
-    gulp.watch( 'src/scss/**/*.scss', gulp.parallel[ 'sass', 'uglify', 'templates' ] );
+    gulp.watch( ['src/js/**', 'src/scss/**/*.scss'], gulp.parallel[ 'sass', 'uglify', 'templates' ] );
     // gulp.watch( 'src/js/**/*.js', [ 'uglify' ] );
     // gulp.watch( 'src/**/*.html', [ 'templates' ] );
 } );
