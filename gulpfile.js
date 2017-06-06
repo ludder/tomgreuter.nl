@@ -1,98 +1,66 @@
-var del = require( 'del' ),
-    pump = require( 'pump' ),
-    gulp = require( 'gulp' ),
-    gutil = require( 'gulp-util' ),
-    uglify = require( 'gulp-uglify' ),
-    gls = require( 'gulp-live-server' ),
-    sass = require( 'gulp-sass' ),
-    ftp = require( 'vinyl-ftp' ),
-    ftp_config = require( './ftp.config' ).config,
-    src = 'src/*',
-    dist = 'dist',
-    server;
+var gulp = require('gulp');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+// var imagemin = require('gulp-imagemin');
+var sourcemaps = require('gulp-sourcemaps');
+var del = require('del');
+var gls = require( 'gulp-live-server' );
+var dist = 'dist';
 
+var paths = {
+  scripts: ['src/js/**/*.js'],
+  templates: ['src/*.html'],
+  images: 'src/img/**/*'
+};
 
-gulp.task( 'clean', function( done ) {
-    del( [ dist ] );
-    done();
-} );
+// Not all tasks need to use streams
+// A gulpfile is just another node program and you can use any package available on npm
+gulp.task('clean', function() {
+  // You can use multiple globbing patterns as you would with `gulp.src`
+  return del([dist]);
+});
 
+gulp.task('scripts', function() {
+  // Minify and copy all JavaScript (except vendor scripts)
+  // with sourcemaps all the way down
+  return gulp.src(paths.scripts)
+    .pipe(sourcemaps.init())
+      .pipe(uglify())
+      .pipe(concat('main.min.js'))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(dist));
+});
+
+// Run web server
 gulp.task( 'serve', function() {
     server = gls.static( dist, 8888 );
     server.start();
 
-    gulp.watch( [ dist + '/**/*' ], function( file ) {
+    gulp.watch( [ 'src/**' ], function( file ) {
         server.notify.apply( server, [ file ] );
     } );
-    gulp.watch( ['src/js/**', 'src/scss/**/*.scss'], gulp.parallel[ 'sass', 'uglify', 'templates' ] );
-    // gulp.watch( 'src/js/**/*.js', [ 'uglify' ] );
-    // gulp.watch( 'src/**/*.html', [ 'templates' ] );
 } );
 
-// gulp.task( 'watch', function( file ) {
-//     gulp.watch( 'src/scss/**/*.scss', [ 'sass' ] );
-//     gulp.watch( 'src/js/**/*.js', [ 'uglify' ] );
-//     gulp.watch( 'src/**/*.html', [ 'templates' ] );
-// } );
+// Copy all static images
+gulp.task('images', ['clean'], function() {
+  return gulp.src(paths.images)
+    // Pass in options to the task
+    // .pipe(imagemin({optimizationLevel: 5}))
+    .pipe(gulp.dest(dist + 'img'));
+});
 
-gulp.task( 'sass', function() {
-    return gulp.src( './src/scss/**/*.scss' )
-        .pipe( sass.sync().on( 'error', sass.logError ) )
-        .pipe( gulp.dest( dist ) );
-} );
-
-// gulp.task( 'sass:watch', function() {
-//     gulp.watch( './scss/**/*.scss', [ 'sass' ] );
-// } );
-
+// Copy HTML files
 gulp.task( 'templates', function() {
-    return gulp.src( './src/**/*.html' )
+    return gulp.src( paths.templates )
         .pipe( gulp.dest( dist ) );
 } );
 
-gulp.task( 'images', function() {
-    return gulp.src( './src/images/**/*.*' )
-        .pipe( gulp.dest( dist + '/images' ) );
-} );
+// Rerun the task when a file changes
+gulp.task('watch', function() {
+  gulp.watch(paths.scripts, ['scripts']);
+  gulp.watch(paths.images, ['images']);
+  gulp.watch(paths.templates, ['templates']);
+});
 
-gulp.task( 'uglify', function( cb ) {
-    pump( [
-            gulp.src( './src/js/**/*.js' ),
-            uglify(),
-            gulp.dest( dist )
-        ],
-        cb
-    );
-} );
-
-// gulp.task( 'build', gulp.series( 'uglify', 'sass', function(done) {
-//     done();
-// }) );
-
-gulp.task( 'deploy', gulp.series( 'uglify', 'sass', function() {
-
-    var conn = ftp.create( {
-        host: ftp_config.host,
-        user: ftp_config.user,
-        password: ftp_config.password,
-        parallel: 10,
-        log: gutil.log
-    } );
-
-    var globs = [ dist + '/**' ];
-
-    // using base = '.' will transfer everything to /public_html correctly
-    // turn off buffering in gulp.src for best performance
-
-    return gulp.src( globs, {
-            base: './' + dist,
-            buffer: false
-        } )
-        .pipe( conn.newer( '/public_html' ) ) // only upload newer files
-        .pipe( conn.dest( '/public_html' ) );
-
-} ) );
-
-gulp.task( 'default', gulp.series( 'clean', 'templates', 'images', 'sass', 'uglify', 'serve', function( done ) {
-    done();
-} ) );
+// The default task (called when you run `gulp` from cli)
+gulp.task('default', ['clean', 'templates', 'scripts', 'images', 'watch']);
