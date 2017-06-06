@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-// var imagemin = require('gulp-imagemin');
+var imagemin = require('gulp-imagemin');
 var sourcemaps = require('gulp-sourcemaps');
 var del = require('del');
 var gls = require( 'gulp-live-server' );
@@ -12,7 +12,7 @@ var paths = {
   scripts: ['src/js/**/*.js'],
   templates: ['src/*.html'],
   css: ['src/scss/*.scss'],
-  images: 'src/img/**/*'
+  images: 'src/images/**/*'
 };
 
 // Not all tasks need to use streams
@@ -47,8 +47,8 @@ gulp.task( 'serve', function() {
 gulp.task('images', ['clean'], function() {
   return gulp.src(paths.images)
     // Pass in options to the task
-    // .pipe(imagemin({optimizationLevel: 5}))
-    .pipe(gulp.dest(dist + 'img'));
+    .pipe(imagemin({optimizationLevel: 5}))
+    .pipe(gulp.dest(dist + '/images'));
 });
 
 // Copy HTML files
