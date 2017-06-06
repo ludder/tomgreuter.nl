@@ -11,7 +11,7 @@ var dist = 'dist';
 var paths = {
   scripts: ['src/js/**/*.js'],
   templates: ['src/*.html'],
-  css: ['src/scss/*.scss'],
+  css: ['src/scss/**/*.scss'],
   images: 'src/images/**/*'
 };
 
@@ -44,7 +44,7 @@ gulp.task( 'serve', function() {
 } );
 
 // Copy all static images
-gulp.task('images', ['clean'], function() {
+gulp.task('images', function() {
   return gulp.src(paths.images)
     // Pass in options to the task
     .pipe(imagemin({optimizationLevel: 5}))
@@ -57,7 +57,7 @@ gulp.task( 'templates', function() {
         .pipe( gulp.dest( dist ) );
 } );
 
-// PRocess SASS
+// Process SASS
 gulp.task( 'sass', function() {
     return gulp.src( './src/scss/**/*.scss' )
         .pipe( sass.sync().on( 'error', sass.logError ) )
@@ -66,11 +66,11 @@ gulp.task( 'sass', function() {
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
-  gulp.watch(paths.scripts, ['scripts']);
-  gulp.watch(paths.images, ['images']);
   gulp.watch(paths.templates, ['templates']);
+  gulp.watch(paths.scripts, ['scripts']);
+  // gulp.watch(paths.images, ['images']); // not really important to watch
   gulp.watch(paths.css, ['sass']);
 });
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['clean', 'templates', 'sass', 'scripts', 'images', 'watch']);
+gulp.task('default', ['templates', 'sass', 'scripts', 'images', 'watch']);
