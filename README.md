@@ -14,7 +14,7 @@ Run build and watch:
 gulp
 ```
 
-Run web server:
+Separate process: Run web server on http://localhost:8888/:
 
 ```
 gulp serve
