@@ -1,0 +1,233 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #fff;
+  font-family: Verdana, Geneva, sans-serif;
+  margin: 0;
+}
+a {
+  color: #355;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+td {
+  padding: 5px;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.intro {
+  color: #355;
+  font-size: 20px;
+  padding: 20px;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+  transition: all 0.35s ease-in-out;
+}
+.intro:hover em {
+  color: #000;
+  text-shadow: 1px 2px rgba(0, 0, 0, 0.15);
+}
+.intro em {
+  font-style: normal;
+}
+.intro p:nth-child(n + 2) {
+  font-size: smaller;
+}
+.contact {
+  background: #e2e7e8;
+  border: 1px solid #c6cfd1;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  display: block;
+  font-size: 20px;
+  padding: 20px;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  font-weight: bold;
+  text-decoration: none;
+}
+.contact:hover,
+.contact:focus,
+.contact:active {
+  background: #edf0f0;
+  color: #203636;
+}
+footer {
+  color: #fff;
+  background: #355;
+  overflow: auto;
+  padding: 20px;
+}
+footer h2 {
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif;
+  text-align: center;
+}
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+footer .right {
+  text-align: right;
+}
+header {
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif;
+  background: #e2e7e8;
+  overflow: auto;
+}
+header h1 {
+  background: #355;
+  color: #fff;
+  float: left;
+  font-size: 40px;
+  padding: 20px 50px;
+}
+header h2 {
+  color: #355;
+  float: right;
+  font-size: 30px;
+  line-height: 2;
+  padding: 20px 20px 0;
+}
+header a {
+  text-decoration: none;
+}
+header a:hover {
+  text-decoration: underline;
+}
+.projects {
+  background: #f0f3f3;
+  margin: 20px 0;
+  padding: 20px 0;
+}
+.projects > ul {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  list-style-type: none;
+}
+.projects > ul > li {
+  background: #fff;
+  -webkit-border-radius: 20px 0;
+  border-radius: 20px 0;
+  cursor: pointer;
+  margin: 10px;
+  padding: 10px 20px;
+  max-width: 340px;
+}
+.projects .tags {
+  padding: 0;
+}
+.projects .tags li {
+  background: #f6f7f8;
+  -webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.4);
+  color: #444;
+  display: inline-block;
+  font-size: smaller;
+  margin: 5px;
+  padding: 3px 5px;
+  -webkit-transform: rotate(-1deg);
+  transform: rotate(-1deg);
+}
+.projects .tags li:nth-child(2) {
+  -webkit-transform: rotate(-2deg);
+  transform: rotate(-2deg);
+  margin-left: 3px;
+}
+.projects .tags li:nth-child(3) {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.projects .tags li:hover {
+  background-color: #f7f1d3;
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.projects .tags li span {
+  display: inline-block;
+  -webkit-transform: rotate(1deg);
+  transform: rotate(1deg);
+}
+.projects p {
+  line-height: 1.7;
+}
+.projects .year {
+  text-align: center;
+  position: relative;
+}
+.projects .year span {
+  background: #fff;
+  color: #bbb;
+  display: inline-block;
+  font-size: small;
+  padding: 8px 8px 12px;
+  position: relative;
+  z-index: 1;
+}
+.projects .year hr {
+  border: none;
+  border-bottom: 1px solid #bbb;
+  position: absolute;
+  top: 9px;
+  width: 100%;
+}
+.projects .logo {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  width: 100%;
+}
+.projects .sanoma {
+  background-color: #4d4d4d;
+}
+.projects .belastingdienst {
+  height: 80px;
+}
+.projects .belastingdienst img {
+  height: 80px;
+}
+.projects .appietoday {
+  height: 80px;
+}
+.projects .really {
+  height: 80px;
+}
+.projects .really img {
+  height: 80px;
+}
+.projects .albelli img {
+  height: 100px;
+}
+.projects .klm img {
+  height: 70px;
+}
+.projects .breman img {
+  height: 60px;
+}
+.projects .ing img {
+  height: 60px;
+}
