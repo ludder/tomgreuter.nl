@@ -1,7 +1,6 @@
 # tomgreuter.nl
 
-In the `src` folder run:
-
 ```
-npx http-server
+npm install
+npm start
 ```
