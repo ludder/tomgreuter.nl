@@ -213,6 +213,9 @@ header a:hover {
 .projects .appietoday {
   height: 80px;
 }
+.projects .cloudnatix img {
+  width: 250px;
+}
 .projects .incentro img {
   width: 160px;
 }
