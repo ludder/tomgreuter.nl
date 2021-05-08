@@ -1,0 +1,27 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg" width="129" height="38">
+    <defs>
+        <filter id="a" width="400%" height="700%" x="-150%" y="-300%" filterUnits="objectBoundingBox">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1"/>
+        </filter>
+        <filter id="b" width="700%" height="700%" x="-300%" y="-300%" filterUnits="objectBoundingBox">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#E01090" d="M122.276 3.04l6.064 21.147a4 4 0 01-2.742 4.948l-30.129 8.639a4 4 0 01-3.042-.347l-13.606-7.542a4 4 0 01-1.559-5.437l7.542-13.606A4 4 0 0187.2 8.936l30.129-8.64a4 4 0 014.947 2.743zm-39.68 19.73a3 3 0 10.834 5.942 3 3 0 00-.835-5.942z"/>
+        <circle cx="79" cy="27.5" fill="#000" filter="url(#a)" transform="rotate(9 79 27.5)" r="1"/>
+        <g transform="translate(2,5)">
+            <text fill="#fff" font-family="Roboto" font-size="16" font-weight="400" transform="rotate(-16 104.641 19.54)">
+                <tspan x="87.141" y="18.539">Tags</tspan>
+            </text>
+        </g>
+        <text fill="#0084f4" font-family="Georgia" font-size="26">
+            <tspan x="0" y="25">Happy</tspan>
+        </text>
+        <circle cx="71.5" cy="22.5" r="1" fill="#000" filter="url(#b)" transform="rotate(9 71.5 22.5)"/>
+        <path fill="#0084f4" fill-rule="nonzero" d="M72.213 18.5l.156.008c.25.017.522.066.812.144l-.386.934a2.994 2.994 0 00-.496-.08c-.238-.018-.42 0-.548.059l.45-1.064h.012z"/>
+        <path fill="#0084f4" fill-rule="nonzero" d="M72.37 18.508c-1.33-.094-2.07.715-1.821 2.05.501 2.687 5.504 6.904 8.991 6.908 2.11.002 2.647-1.21 1.598-2.833-.771-1.193-2.404-2.715-4.307-4.074-1.752-1.252-3.323-1.97-4.462-2.051zm-.071.997c.92.065 2.335.713 3.95 1.867 1.81 1.292 3.36 2.737 4.049 3.804l.14.225c.474.814.27 1.066-.897 1.065-3.003-.003-7.595-3.875-8.009-6.092-.128-.685.085-.917.767-.869z"/>
+        <path fill="#E01090" d="M78.638 21.967c.789.674 1.471 1.348 1.983 1.967a2.961 2.961 0 00-.496.993c-.445-.615-1.14-1.333-1.982-2.066l.495-.894z"/>
+    </g>
+</svg>
