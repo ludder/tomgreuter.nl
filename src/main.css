@@ -213,6 +213,9 @@ header a:hover {
 .projects .appietoday {
   height: 80px;
 }
+.projects .incentro img {
+  width: 160px;
+}
 .projects .really {
   height: 80px;
 }
