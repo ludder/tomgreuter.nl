@@ -1,6 +1,6 @@
 {
   "name": "tomgreuter.nl",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Homepage of Tom Greuter - web developer",
   "main": "index.html",
   "repository": {
@@ -8,12 +8,9 @@
     "url": "https://github.com/ludder/tg.nl.git"
   },
   "scripts": {
-    "start": "http-server -p 5000 src/",
+    "start": "serve src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tom Greuter",
-  "license": "ISC",
-  "devDependencies": {
-    "http-server": "^0.12.3"
-  }
+  "license": "ISC"
 }

@@ -1,8 +1,9 @@
 # tomgreuter.nl
 
+Run locally with
+
 ```
-npm install
-npm start
+serve src
 ```
 
 And Filezilla ftw!
