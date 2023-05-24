@@ -1,13 +1,22 @@
 <!DOCTYPE html>
-<!-- Hi there! This is custom hand-made code. Check it out on https://github.com/ludder/tg.nl -->
 <html lang="nl">
   <head>
     <meta charset="utf-8" />
-    <title>schrijfwerk</title>
+    <title>Schrijfwerk</title>
     <meta name="description" content="Verhalen en gedichten van Tom" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      * {
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+      }
+
       html {
         --s: 100px; /* control the size */
         --c1: #fff0e5;
@@ -29,6 +38,7 @@
           conic-gradient(from 180deg at 45% var(--_t)) calc(var(--s) / 4) 0,
           var(--c2);
         background-size: var(--s) var(--s);
+        min-height: 100vh;
       }
 
       body {
@@ -37,13 +47,28 @@
         min-height: 100vh;
       }
 
+      main {
+        margin: 0 auto;
+        max-width: 80ch;
+      }
+
       h1 {
-        background: rgba(40, 20, 150, 0.8);
-        text-align: center;
-        padding: 1.5rem 1rem;
+        background: rgba(40, 20, 150, 0.9);
+        border: 10px solid white;
         font-size: 3rem;
-        -webkit-text-stroke: 1px var(--purple);
-        border: 2px solid white;
+        margin-bottom: 3rem;
+        padding: 2rem 1rem;
+        text-align: center;
+      }
+
+      h2 {
+        hyphens: auto;
+      }
+
+      @media screen and (max-width: 600px) {
+        h1 {
+          font-size: 2rem;
+        }
       }
 
       small {
@@ -55,19 +80,22 @@
       }
 
       article.card {
-        background-color: rgba(84, 44, 233, 0.8);
+        background-color: rgba(40, 20, 150, 0.9);
+        border: 10px solid white;
         border-radius: 1em;
         box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
-        flex: 1;
+        flex: 1 1 0;
         margin: 0 auto;
         max-width: 40em;
         text-align: center;
         transition: all 0.2s ease-in-out;
+        width: 100%;
       }
 
       article.card:hover {
         background-color: rgba(84, 44, 233, 1);
         box-shadow: 0 0 1em rgba(0, 0, 0, 0.8);
+        border-style: dotted;
       }
 
       article.card > a {
@@ -86,14 +114,27 @@
         text-decoration: underline;
       }
 
+      article.card h3 {
+        font-weight: normal;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+      }
+
+      article.card p {
+        line-height: 1.7;
+      }
+
       .card .flex {
         display: flex;
         flex-direction: column-reverse;
       }
 
-      .flexer {
-        display: flex;
-        gap: 2em;
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-auto-rows: 1fr;
+        grid-auto-columns: 1fr;
+        gap: 2rem;
         max-width: 800px;
         margin: 0 auto;
       }
@@ -101,28 +142,63 @@
   </head>
 
   <body>
-    <h1>Verhalen, poëzie en andere uitprobeersels van Tom Greuter</h1>
+    <main>
+      <h1>Verhalen, poëzie en andere uitprobeersels</h1>
 
-    <div class="flexer">
-      <article class="card">
-        <a href="https://tom-vlieger.vercel.app/">
-          <div class="flex">
-            <h2>Luchtpost</h2>
-            <h3>Poëzie</h3>
-          </div>
-          <p>Een antwoordgedicht decomponeerd tot atomen.</p>
-        </a>
-      </article>
+      <div class="grid">
+        <article class="card">
+          <a href="https://tom-vlieger.vercel.app/">
+            <div class="flex">
+              <h2>Het telefoonnummer</h2>
+              <h3>Proza</h3>
+            </div>
+            <p>
+              Een kort verhaal, volledig configurabel naar smaak van de lezer.
+            </p>
+          </a>
+        </article>
 
-      <article class="card">
-        <div class="flex">
-          <h2>Het telefoonnummer</h2>
-          <h3>Proza</h3>
-        </div>
-        <p>Een kort verhaal, volledig configurabel naar smaak van de lezer.</p>
-      </article>
-    </div>
-    <!-- <h1>Verhalen</h1>
+        <article class="card">
+          <a href="https://tom-vlieger.vercel.app/">
+            <div class="flex">
+              <h2>Luchtpost</h2>
+              <h3>Poëzie</h3>
+            </div>
+            <p>Een antwoordgedicht decomponeerd tot atomen.</p>
+          </a>
+        </article>
+
+        <article class="card">
+          <a href="/schrijven/downloads/het-mes.pdf">
+            <div class="flex">
+              <h2>Het mes</h2>
+              <h3>Proza</h3>
+            </div>
+            <p>Een verhaal over een mes.<br />(PDF)</p>
+          </a>
+        </article>
+
+        <article class="card">
+          <a href="/schrijven/downloads/het-mes.epub">
+            <div class="flex">
+              <h2>Het mes</h2>
+              <h3>Proza</h3>
+            </div>
+            <p>Een verhaal over een mes.<br />(EPUB)</p>
+          </a>
+        </article>
+
+        <article class="card">
+          <a href="/schrijven/downloads/gedichten.pdf">
+            <div class="flex">
+              <h2>Verzamelde gedichten</h2>
+              <h3>Poëzie</h3>
+            </div>
+            <p>Verzamelde gedichten<br />(PDF)</p>
+          </a>
+        </article>
+      </div>
+      <!-- <h1>Verhalen</h1>
     <ul>
       <li>
         Het mes (2022)
@@ -131,7 +207,7 @@
       </li>
     </ul> -->
 
-    <!-- <h1>Poëzie</h1>
+      <!-- <h1>Poëzie</h1>
     <ul>
       <li>
         Huidgenoten (2022)
@@ -163,6 +239,7 @@
       </li>
     </ul> -->
 
-    <!-- <a href="/schrijven/downloads/gedichten.pdf">Alle gedichten (pdf)</a> -->
+      <!-- <a href="/schrijven/downloads/gedichten.pdf">Alle gedichten (pdf)</a> -->
+    </main>
   </body>
 </html>
