@@ -1,42 +1,168 @@
 <!DOCTYPE html>
 <!-- Hi there! This is custom hand-made code. Check it out on https://github.com/ludder/tg.nl -->
 <html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <title>schrijfwerk</title>
+    <meta name="description" content="Verhalen en gedichten van Tom" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/main.css" />
+    <style>
+      html {
+        --s: 100px; /* control the size */
+        --c1: #fff0e5;
+        --c2: rgba(40, 20, 150, 1);
+        --c3: #e1642a;
+        --purple: rgba(40, 20, 150, 1);
 
-<head>
-  <meta charset="utf-8" />
-  <title>schrijfwerk</title>
-  <meta name="description" content="Verhalen en gedichten van Tom" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/main.css" />
-  <style>
-    body {
-      margin: 4%;
-    }
+        --_g: 50%, #0000 37%, var(--c1) 39% 70%, #0000 72%;
+        --_t: 50%, var(--c2) 40deg, var(--c3) 0 140deg, var(--c2) 0 180deg,
+          #0000 0;
+        --_s: 47% 50% at;
+        background: radial-gradient(var(--_s) -10% var(--_g)) 0
+            calc(var(--s) / 2),
+          radial-gradient(var(--_s) -10% var(--_g)) calc(var(--s) / 2) 0,
+          radial-gradient(var(--_s) 110% var(--_g)),
+          radial-gradient(var(--_s) 110% var(--_g)) calc(var(--s) / 2)
+            calc(var(--s) / 2),
+          conic-gradient(from 0deg at 55% var(--_t)) calc(var(--s) / 4) 0,
+          conic-gradient(from 180deg at 45% var(--_t)) calc(var(--s) / 4) 0,
+          var(--c2);
+        background-size: var(--s) var(--s);
+      }
 
-  </style>
-</head>
+      body {
+        color: white;
+        margin: 4%;
+        min-height: 100vh;
+      }
 
-<body>
-  <h1>Verhalen</h1>
-  <ul>
-    <li>
-      Het mes (2022)
-      <a href="/schrijven/downloads/het-mes.pdf">pdf</a>
-      <a href="/schrijven/downloads/het-mes.epub">epub</a>
-    </li>
-  </ul>
+      h1 {
+        background: rgba(40, 20, 150, 0.8);
+        text-align: center;
+        padding: 1.5rem 1rem;
+        font-size: 3rem;
+        -webkit-text-stroke: 1px var(--purple);
+        border: 2px solid white;
+      }
 
-  <h1>Poëzie</h1>
-  <ul>
-    <li>Huidgenoten (2022)</li>
-    <li>Gasrekening (2023)</li>
-    <li>Licht is niet aan iedereen besteed (2023)</li>
-    <li>Gesel Mij Google Maps (2023)</li>
-    <li>Mistmetamorfose (2023)</li>
-  </ul>
+      small {
+        display: block;
+      }
 
-  <a href="/schrijven/downloads/gedichten.pdf">Alle gedichten (pdf)</a>
+      li {
+        margin-bottom: 1em;
+      }
 
-</body>
+      article.card {
+        background-color: rgba(84, 44, 233, 0.8);
+        border-radius: 1em;
+        box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+        flex: 1;
+        margin: 0 auto;
+        max-width: 40em;
+        text-align: center;
+        transition: all 0.2s ease-in-out;
+      }
 
+      article.card:hover {
+        background-color: rgba(84, 44, 233, 1);
+        box-shadow: 0 0 1em rgba(0, 0, 0, 0.8);
+      }
+
+      article.card > a {
+        color: #eee;
+        display: block;
+        padding: 3em;
+        text-decoration: none;
+      }
+
+      article.card > a:hover {
+        color: white;
+      }
+
+      article.card > a:hover h2 {
+        color: white;
+        text-decoration: underline;
+      }
+
+      .card .flex {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+
+      .flexer {
+        display: flex;
+        gap: 2em;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Verhalen, poëzie en andere uitprobeersels van Tom Greuter</h1>
+
+    <div class="flexer">
+      <article class="card">
+        <a href="https://tom-vlieger.vercel.app/">
+          <div class="flex">
+            <h2>Luchtpost</h2>
+            <h3>Poëzie</h3>
+          </div>
+          <p>Een antwoordgedicht decomponeerd tot atomen.</p>
+        </a>
+      </article>
+
+      <article class="card">
+        <div class="flex">
+          <h2>Het telefoonnummer</h2>
+          <h3>Proza</h3>
+        </div>
+        <p>Een kort verhaal, volledig configurabel naar smaak van de lezer.</p>
+      </article>
+    </div>
+    <!-- <h1>Verhalen</h1>
+    <ul>
+      <li>
+        Het mes (2022)
+        <a href="/schrijven/downloads/het-mes.pdf">pdf</a>
+        <a href="/schrijven/downloads/het-mes.epub">epub</a>
+      </li>
+    </ul> -->
+
+    <!-- <h1>Poëzie</h1>
+    <ul>
+      <li>
+        Huidgenoten (2022)
+        <small>Schrijf een gedicht over iets wat je verbaast</small>
+      </li>
+      <li>
+        Gasrekening (2023)
+
+        <small>Schrijf een gedicht over iets wat je verbaast</small>
+      </li>
+      <li>
+        Licht is niet aan iedereen besteed (2023)
+        <small
+          >Schrijf een "ding-gedicht" (uit het perspectief van iets
+          onbezields)</small
+        >
+      </li>
+      <li>
+        Gesel Mij Google Maps (2023)
+        <small>Beschrijf een emotie zonder "grote" woorden te gebruiken</small>
+      </li>
+      <li>
+        Mistmetamorfose (2023)
+        <small>Schrijf een gedicht bij een foto</small>
+      </li>
+      <li>
+        Uitglijder der natuur (2023)
+        <small>Schrijf een sonnet</small>
+      </li>
+    </ul> -->
+
+    <!-- <a href="/schrijven/downloads/gedichten.pdf">Alle gedichten (pdf)</a> -->
+  </body>
 </html>
